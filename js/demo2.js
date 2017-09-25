@@ -1,5 +1,5 @@
 /**
- * demo1.js
+ * demo2.js
  * http://www.codrops.com
  *
  * Licensed under the MIT license.
@@ -16,8 +16,6 @@
 	DOM.enter = document.querySelector('.enter');
 	charming(DOM.enter);
 	DOM.enterLetters = Array.from(DOM.enter.querySelectorAll('span'));
-	// Set the SVG transform origin.
-	DOM.shape.style.transformOrigin = '50% 0%';
 
 	const init = () => {
 		imagesLoaded(document.body, {background: true} , () => document.body.classList.remove('loading'));
@@ -34,23 +32,15 @@
 
 		anime({
 			targets: DOM.intro,
-			duration: 1100,
+			duration: 1500,
 			easing: 'easeInOutSine',
 			translateY: '-200vh'
-		});
-		
-		anime({
-			targets: DOM.shape,
-			scaleY: [
-				{value:[0.8,1.8],duration: 550,easing: 'easeInQuad'},
-				{value:1,duration: 550,easing: 'easeOutQuad'}
-			]
 		});
 
 		anime({
 			targets: DOM.path,
-			duration: 1100,
-			easing: 'easeOutQuad',
+			duration: 1500,
+			easing: 'easeInOutSine',
 			d: DOM.path.getAttribute('pathdata:id')
 		});
 	};
@@ -73,7 +63,7 @@
 				{value: 1, duration: 150, easing: 'linear'}
 			],
 			color: {
-				value: '#ff963b',
+				value: '#002068',
 				duration: 1,
 				delay: (t,i,l) => i*15+150
 			}
@@ -98,7 +88,7 @@
 				{value: 1, duration: 150, easing: 'linear'}
 			],
 			color: {
-				value: '#ffffff',
+				value: '#ecec11',
 				duration: 1,
 				delay: (t,i,l) => (l-i-1)*15+150
 			}

@@ -1,5 +1,5 @@
 /**
- * demo1.js
+ * demo4.js
  * http://www.codrops.com
  *
  * Licensed under the MIT license.
@@ -16,8 +16,6 @@
 	DOM.enter = document.querySelector('.enter');
 	charming(DOM.enter);
 	DOM.enterLetters = Array.from(DOM.enter.querySelectorAll('span'));
-	// Set the SVG transform origin.
-	DOM.shape.style.transformOrigin = '50% 0%';
 
 	const init = () => {
 		imagesLoaded(document.body, {background: true} , () => document.body.classList.remove('loading'));
@@ -34,23 +32,18 @@
 
 		anime({
 			targets: DOM.intro,
-			duration: 1100,
-			easing: 'easeInOutSine',
-			translateY: '-200vh'
-		});
-		
-		anime({
-			targets: DOM.shape,
-			scaleY: [
-				{value:[0.8,1.8],duration: 550,easing: 'easeInQuad'},
-				{value:1,duration: 550,easing: 'easeOutQuad'}
-			]
+			translateY: {
+				value: '-200vh', 
+				delay: 100,
+				duration: 2000,
+				easing: 'easeInOutQuad'
+			}
 		});
 
 		anime({
 			targets: DOM.path,
-			duration: 1100,
-			easing: 'easeOutQuad',
+			duration: 1200, 
+			easing: 'linear',
 			d: DOM.path.getAttribute('pathdata:id')
 		});
 	};
@@ -63,7 +56,7 @@
 		anime.remove(DOM.enterLetters);
 		anime({
 			targets: DOM.enterLetters,
-			delay: (t,i) => i*15,
+			delay: (t,i) => i*7,
 			translateY: [
 				{value: 10, duration: 150, easing: 'easeInQuad'},
 				{value: [-10,0], duration: 150, easing: 'easeOutQuad'}
@@ -73,9 +66,9 @@
 				{value: 1, duration: 150, easing: 'linear'}
 			],
 			color: {
-				value: '#ff963b',
+				value: '#ffffff',
 				duration: 1,
-				delay: (t,i,l) => i*15+150
+				delay: (t,i,l) => i*7+150
 			}
 		});
 	}, 50);
@@ -88,7 +81,7 @@
 		anime.remove(DOM.enterLetters);
 		anime({
 			targets: DOM.enterLetters,
-			delay: (t,i,l) => (l-i-1)*15,
+			delay: (t,i,l) => (l-i-1)*7,
 			translateY: [
 				{value: 10, duration: 150, easing: 'easeInQuad'},
 				{value: [-10,0], duration: 150, easing: 'easeOutQuad'}
@@ -98,9 +91,9 @@
 				{value: 1, duration: 150, easing: 'linear'}
 			],
 			color: {
-				value: '#ffffff',
+				value: '#4b2cf2',
 				duration: 1,
-				delay: (t,i,l) => (l-i-1)*15+150
+				delay: (t,i,l) => (l-i-1)*7+150
 			}
 		});
 	};

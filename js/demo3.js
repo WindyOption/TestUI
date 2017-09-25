@@ -1,5 +1,5 @@
 /**
- * demo1.js
+ * demo3.js
  * http://www.codrops.com
  *
  * Licensed under the MIT license.
@@ -34,24 +34,38 @@
 
 		anime({
 			targets: DOM.intro,
-			duration: 1100,
-			easing: 'easeInOutSine',
+			duration: 1600,
+			easing: 'easeInOutCubic',
 			translateY: '-200vh'
 		});
-		
+
 		anime({
 			targets: DOM.shape,
+			easing: 'easeInOutCubic',
 			scaleY: [
-				{value:[0.8,1.8],duration: 550,easing: 'easeInQuad'},
-				{value:1,duration: 550,easing: 'easeOutQuad'}
+				{value: [0,1], duration: 800},
+				{value: 0, duration: 1200, easing: 'easeOutElastic', elasticity: 700}
 			]
 		});
 
 		anime({
 			targets: DOM.path,
-			duration: 1100,
-			easing: 'easeOutQuad',
+			duration: 800,
+			easing: 'easeInOutQuad',
 			d: DOM.path.getAttribute('pathdata:id')
+		});
+
+		anime({
+			targets: [DOM.intro.querySelector('.content__inner'), DOM.shape],
+			duration: 1300,
+			easing: 'linear',
+			backgroundColor: (t,i) => {
+				console.log('here')
+				if ( i === 0 ) return '#fff1fb';
+			},
+			fill: (t,i) => {
+				if ( i === 1 ) return '#fff1fb';
+			}
 		});
 	};
 
@@ -73,7 +87,7 @@
 				{value: 1, duration: 150, easing: 'linear'}
 			],
 			color: {
-				value: '#ff963b',
+				value: '#ffffff',
 				duration: 1,
 				delay: (t,i,l) => i*15+150
 			}
@@ -98,7 +112,7 @@
 				{value: 1, duration: 150, easing: 'linear'}
 			],
 			color: {
-				value: '#ffffff',
+				value: '#f470d2',
 				duration: 1,
 				delay: (t,i,l) => (l-i-1)*15+150
 			}
